@@ -1,5 +1,9 @@
 extends layout
 
+
+include _includes/sharedHTMLfunctions
+
+
 block content
     //h1= title
     //p Welcome to #{title}
@@ -18,10 +22,7 @@ block content
                         h4
                             a(href='/location')= location.name
                         small &nbsp;
-                            - for (var i = 1; i <= location.rating; i++)
-                                span.glyphicon.glyphicon-star
-                            - for (i = location.rating; i < 5; i++)
-                                span.glyphicon.glyphicon-star-empty
+                            +outputRating(location.rating)
 
                         span.badge.pull-right.badge-default= location.distance
                         p.address= location.address
@@ -31,7 +32,4 @@ block content
                                 | &nbsp;
 
         .col-xs-12.col-sm-4
-            p.lead.
-                Looking for wifi and a seat? Loc8r help you find places
-                to work when out and about. Perhaps with coffee, cake or a pint?
-                Let Loc8r help you find the place you're looking for.
+            p.lead= sidebar
